@@ -18,11 +18,11 @@ export class DashboardService {
   async getStats() {
     const totalUsers = await this.usersRepo.count();
     const totalOrders = await this.ordersRepo.count();
-    const { sum } = await this.ordersRepo
+    const result = await this.ordersRepo
       .createQueryBuilder('order')
       .select('SUM(order.total)', 'sum')
       .getRawOne<{ sum: string }>();
-    const totalRevenue = Number(sum) || 0;
+    const totalRevenue = result ? Number(result.sum) : 0;
     const activeProducts = await this.productsRepo.count({ where: { status: 'active' } });
     const pendingRequests = await this.requestsRepo.count({ where: { status: 'pending' } });
     return { totalUsers, totalOrders, totalRevenue, activeProducts, pendingRequests };

@@ -10,7 +10,7 @@ export class ProfileController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  async getProfile(@Req() req: Request) {
+  async getProfile(@Req() req: any) {
     const user = await this.usersService.findById(req.user['id']);
     if (!user) return null;
     const { id, name, email, isProfessional, professionalType, avatar, phone } = user;
@@ -18,7 +18,7 @@ export class ProfileController {
   }
 
   @Put()
-  updateProfile(@Req() req: Request, @Body() dto: UpdateProfileDto) {
+  updateProfile(@Req() req: any, @Body() dto: UpdateProfileDto) {
     return this.usersService.updateProfile(req.user['id'], dto);
   }
 }
