@@ -1,11 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn, Index } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, Index } from 'typeorm';
 import { Category } from '../categories/category.entity';
 import { User } from '../users/user.entity';
 
-export type ProductStatus = 'active' | 'inactive' | 'pending';
+export type ServiceStatus = 'active' | 'inactive' | 'pending';
 
 @Entity()
-export class Product {
+export class Service {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -32,14 +32,8 @@ export class Product {
   @ManyToOne(() => User, { nullable: true, onDelete: 'SET NULL' })
   user?: User | null;
 
-  @Column('text', { array: true, default: '{}' })
-  images: string[];
-
-  @Column('int')
-  stock: number;
-
   @Column({ type: 'enum', enum: ['active', 'inactive', 'pending'], default: 'pending' })
-  status: ProductStatus;
+  status: ServiceStatus;
 
   @CreateDateColumn()
   createdAt: Date;
