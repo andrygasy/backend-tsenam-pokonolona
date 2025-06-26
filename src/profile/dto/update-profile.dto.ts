@@ -7,7 +7,7 @@ export class UpdateProfileDto {
   name?: string;
 
   @IsOptional()
-  @IsPhoneNumber(null)
+  @IsPhoneNumber('MG')
   phone?: string;
 
   @IsOptional()
