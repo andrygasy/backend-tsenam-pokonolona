@@ -17,7 +17,8 @@ import { ProfessionalRequest } from './professional/professional-request.entity'
 import { ProfessionalModule } from './professional/professional.module';
 import { AdminModule } from './admin/admin.module';
 import { HeroSlide } from './admin/hero-slide.entity';
-import { Promotion } from './admin/promotion.entity';
+import { PromotionsModule } from './promotions/promotions.module';
+import { Promotion } from './promotions/promotion.entity';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { Promotion } from './admin/promotion.entity';
     ProfileModule,
     SearchModule,
     ProfessionalModule,
+    PromotionsModule,
     AdminModule,
   ],
 })
