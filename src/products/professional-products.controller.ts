@@ -15,7 +15,7 @@ export class ProfessionalProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
-  create(@Req() req: Request, @Body() dto: CreateProductDto) {
+  create(@Req() req: any, @Body() dto: CreateProductDto) {
     return this.productsService.create({ ...dto, userId: req.user['id'] } as any);
   }
 
@@ -30,7 +30,7 @@ export class ProfessionalProductsController {
   }
 
   @Get()
-  findMine(@Req() req: Request, @Query() query: QueryProductsDto) {
+  findMine(@Req() req: any, @Query() query: QueryProductsDto) {
     return this.productsService.findAllByUser(req.user['id'], query);
   }
 }

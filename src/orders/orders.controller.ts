@@ -11,12 +11,12 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Post()
-  create(@Req() req: Request, @Body() dto: CreateOrderDto) {
+  create(@Req() req: any, @Body() dto: CreateOrderDto) {
     return this.ordersService.createOrder(req.user['id'], dto);
   }
 
   @Get()
-  findAll(@Req() req: Request, @Query() query: QueryOrdersDto) {
+  findAll(@Req() req: any, @Query() query: QueryOrdersDto) {
     return this.ordersService.findAllByUser(req.user['id'], query);
   }
 
