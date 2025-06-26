@@ -26,6 +26,9 @@ export class Order {
   @Column('float')
   total: number;
 
+  @Column({ nullable: true })
+  trackingNumber?: string;
+
   @Column({ type: 'enum', enum: ['pending', 'paid', 'shipped', 'delivered'], default: 'pending' })
   status: OrderStatus;
 
