@@ -7,10 +7,12 @@ import { CategoriesModule } from './categories/categories.module';
 import { User } from './users/user.entity';
 import { Category } from './categories/category.entity';
 import { Product } from './products/product.entity';
+import { Service } from './services/service.entity';
 import { ProductsModule } from './products/products.module';
 import { Order } from './orders/order.entity';
 import { OrdersModule } from './orders/orders.module';
 import { ProfileModule } from './profile/profile.module';
+import { SearchModule } from './search/search.module';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { ProfileModule } from './profile/profile.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [User, Category, Product, Order],
+      entities: [User, Category, Product, Service, Order],
       synchronize: true,
     }),
     AuthModule,
@@ -27,6 +29,7 @@ import { ProfileModule } from './profile/profile.module';
     ProductsModule,
     OrdersModule,
     ProfileModule,
+    SearchModule,
   ],
 })
 export class AppModule {}
