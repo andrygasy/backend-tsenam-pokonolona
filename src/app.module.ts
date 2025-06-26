@@ -13,6 +13,8 @@ import { Order } from './orders/order.entity';
 import { OrdersModule } from './orders/orders.module';
 import { ProfileModule } from './profile/profile.module';
 import { SearchModule } from './search/search.module';
+import { ProfessionalRequest } from './professional/professional-request.entity';
+import { ProfessionalModule } from './professional/professional.module';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { SearchModule } from './search/search.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [User, Category, Product, Service, Order],
+      entities: [User, Category, Product, Service, Order, ProfessionalRequest],
       synchronize: true,
     }),
     AuthModule,
@@ -30,6 +32,7 @@ import { SearchModule } from './search/search.module';
     OrdersModule,
     ProfileModule,
     SearchModule,
+    ProfessionalModule,
   ],
 })
 export class AppModule {}
