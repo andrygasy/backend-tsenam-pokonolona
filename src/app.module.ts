@@ -6,6 +6,8 @@ import { UsersModule } from './users/users.module';
 import { CategoriesModule } from './categories/categories.module';
 import { User } from './users/user.entity';
 import { Category } from './categories/category.entity';
+import { Product } from './products/product.entity';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -13,12 +15,13 @@ import { Category } from './categories/category.entity';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [User, Category],
+      entities: [User, Category, Product],
       synchronize: true,
     }),
     AuthModule,
     UsersModule,
     CategoriesModule,
+    ProductsModule,
   ],
 })
 export class AppModule {}
